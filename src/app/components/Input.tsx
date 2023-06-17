@@ -6,12 +6,16 @@ function Input({
   id,
   placeholder,
   classes = "",
+  value,
+  setValue,
 }: {
   type: string;
   label: string;
-  id:string;
+  id: string;
   placeholder: string;
   classes?: string;
+  value: string;
+  setValue: Function | any;
 }) {
   return (
     <div
@@ -25,12 +29,13 @@ function Input({
           {label}
         </label>
         <input
+          value={value}
+          onChange={(e: any) => setValue(e.target.value)}
           type={type}
           className={`not-italic font-medium text-xl leading-7 tracking-[0.13px] text-black border-none outline-none`}
           id={id}
           name="email"
           placeholder={placeholder}
-          
         />
       </div>
     </div>

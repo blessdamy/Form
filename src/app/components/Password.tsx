@@ -7,13 +7,15 @@ export interface PasswordProps {
   id: string;
   placeholder: string;
   classes?: string;
+  value: string;
+  setValue: Function;
 }
 
 function Password(props: PasswordProps) {
   const { label, id, placeholder, classes = "" } = props;
 
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [password, setPassword] = useState<string>("");
+  // const [password, setPassword] = useState<string>("");
 
   return (
     <div>
@@ -34,13 +36,14 @@ function Password(props: PasswordProps) {
             {label}
           </label>
           <input
-            onChange={(e: any) => setPassword(e.target.value)}
+            // onChange={(e: any) => setPassword(e.target.value)}
+            onChange={(e: any) => props.setValue(e.target.value)}
             className={`not-italic font-black text-xl leading-7 tracking-[0.15px] text-black border-none outline-none`}
             type={showPassword ? "text" : "password"}
-            id={password}
+            id={props.value}
             name="password"
             placeholder={placeholder}
-          
+            value={props.value}
           />
         </div>
       </div>
